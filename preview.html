@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sweetest Gift ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#2b1006;
+    color:white;
+    overflow:hidden;
+}
+
+button{
+    font-family:'Poppins',sans-serif;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+#musicButton{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,215,0,.9);
+    color:#4b210e;
+    font-size:22px;
+    cursor:pointer;
+    z-index:99999;
+    box-shadow:0 0 20px rgba(255,215,0,.7);
+}
+
+#musicButton:hover{
+    transform:scale(1.1);
+}
+
+/* Keep YouTube player completely out of the visible layout. */
+#youtubePlayer{
+    position:fixed !important;
+    width:1px !important;
+    height:1px !important;
+    left:-100px !important;
+    top:-100px !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+    overflow:hidden !important;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+#loadingScreen{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#210b03,#5b2810,#8b4a22);
+}
+
+.logo{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    color:#ffd700;
+    text-shadow:0 0 25px gold;
+    text-align:center;
+}
+
+#loadingScreen p{
+    margin-top:15px;
+    font-size:18px;
+}
+
+.loadingBar{
+    width:300px;
+    height:12px;
+    margin-top:25px;
+    background:#351609;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    width:0;
+    height:100%;
+    background:#ffd700;
+    animation:loading 3.2s linear forwards;
+}
+
+@keyframes loading{
+    to{width:100%;}
+}
+
+/* =========================
+   COMMON BUTTON
+========================= */
+
+.mainButton{
+    border:none;
+    border-radius:40px;
+    padding:16px 35px;
+    font-size:18px;
+    font-weight:700;
+    color:#54240f;
+    background:linear-gradient(90deg,#ffd700,#fff1a3,#ffd700);
+    box-shadow:0 0 25px rgba(255,215,0,.7);
+    transition:.3s;
+}
+
+.mainButton:hover{
+    transform:scale(1.06);
+    box-shadow:0 0 40px gold;
+}
+
+/* =========================
+   SCREENS
+========================= */
+
+#giftScreen,
+#envelopeScreen,
+#passwordScreen,
+#letterScreen,
+#surprise2,
+#ultimateGift{
+    width:100vw;
+    height:100vh;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at center,#7b3f20 0%,#351207 65%,#120301 100%);
+}
+
+#giftScreen{
+    display:flex;
+}
+
+.title,
+.ultimateTitle{
+    font-family:'Great Vibes',cursive;
+    font-size:65px;
+    color:#ffd700;
+    text-shadow:0 0 20px gold;
+    margin-bottom:40px;
+}
+
+/* =========================
+   GIFT BOX
+========================= */
+
+.giftBox{
+    position:relative;
+    width:240px;
+    height:210px;
+}
+
+.box{
+    position:absolute;
+    bottom:0;
+    width:240px;
+    height:155px;
+    border-radius:15px;
+    background:linear-gradient(145deg,#a45b2a,#6b3a1d,#4a2410);
+    border:3px solid gold;
+    box-shadow:0 25px 45px rgba(0,0,0,.5);
+}
+
+.lid{
+    position:absolute;
+    top:25px;
+    width:240px;
+    height:45px;
+    border-radius:15px;
+    background:linear-gradient(145deg,#c87b35,#a45b2a,#6b3a1d);
+    border:3px solid gold;
+}
+
+.ribbon{
+    position:absolute;
+    left:109px;
+    top:0;
+    width:22px;
+    height:160px;
+    background:gold;
+    box-shadow:0 0 20px gold;
+}
+
+.ribbon::before{
+    content:"";
+    position:absolute;
+    left:-58px;
+    top:25px;
+    width:138px;
+    height:22px;
+    background:gold;
+    border-radius:20px;
+}
+
+.ribbon::after{
+    content:"🎀";
+    position:absolute;
+    left:-18px;
+    top:-35px;
+    font-size:42px;
+}
+
+#unwrapBtn{
+    margin-top:50px;
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope{
+    width:300px;
+    height:190px;
+    background:#f7d8a8;
+    border-radius:12px;
+    position:relative;
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+    margin-bottom:35px;
+}
+
+.envelope::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    border-left:150px solid transparent;
+    border-right:150px solid transparent;
+    border-top:100px solid #d9a36a;
+}
+
+.envelopeHeart{
+    position:absolute;
+    left:50%;
+    top:55%;
+    transform:translate(-50%,-50%);
+    font-size:50px;
+    z-index:2;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.passwordCard,
+.letterCard,
+.surpriseCard{
+    width:min(850px,94vw);
+    padding:40px 30px;
+    background:rgba(255,239,215,.96);
+    color:#57230e;
+    border-radius:28px;
+    border:3px solid #d8aa37;
+    box-shadow:0 25px 70px rgba(0,0,0,.6);
+}
+
+.passwordCard{
+    width:min(600px,90vw);
+}
+
+.passwordCard h1,
+.letterCard h1,
+.surpriseCard h1{
+    font-family:'Great Vibes',cursive;
+    font-size:55px;
+    color:#963d55;
+    margin-bottom:20px;
+}
+
+.passwordCard input{
+    width:80%;
+    padding:14px;
+    border:2px solid #c58b52;
+    border-radius:25px;
+    outline:none;
+    font-size:17px;
+    text-align:center;
+    margin:15px 0;
+}
+
+#errorText{
+    color:#b32626;
+    margin-top:12px;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+#letterScreen{
+    overflow:auto;
+    padding:20px;
+}
+
+.letterCard{
+    max-height:92vh;
+    overflow-y:auto;
+}
+
+.letterLayout{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+    margin:10px auto;
+}
+
+.letterRow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:28px;
+    padding:18px;
+    border-radius:22px;
+    background:rgba(255,255,255,.32);
+}
+
+.letterText{
+    flex:1;
+    text-align:left;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.letterText p{
+    margin:0;
+}
+
+.letterRow img{
+    width:250px;
+    height:250px;
+    object-fit:cover;
+    border-radius:20px;
+    border:3px solid #d8aa37;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+    flex-shrink:0;
+    opacity:0;
+    transform:scale(.75);
+    transition:.8s ease;
+}
+
+.letterRow.show img{
+    opacity:1;
+    transform:scale(1);
+}
+
+.letterRow.show .letterText{
+    animation:textIn .8s ease;
+}
+
+@keyframes textIn{
+    from{
+        opacity:0;
+        transform:translateX(-15px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+#moreSurprisesBtn{
+    display:none;
+    margin-top:25px;
+}
+
+/* =========================
+   SURPRISE 2
+========================= */
+
+.surpriseCard{
+    animation:cardIn .8s ease;
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   FINAL BIRTHDAY
+========================= */
+
+#finalScreen{
+    display:none;
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at 50% 30%,#8c4927,transparent 35%),
+        linear-gradient(135deg,#160301,#4a1708,#210502);
+    overflow:hidden;
+    z-index:500;
+}
+
+.finalCard{
+    position:relative;
+    width:min(650px,90vw);
+    padding:45px 30px;
+    background:rgba(255,245,225,.96);
+    color:#57230e;
+    border:3px solid #d8aa37;
+    border-radius:30px;
+    box-shadow:0 25px 70px rgba(0,0,0,.7);
+    z-index:2;
+}
+
+.finalCard h1{
+    font-family:'Great Vibes',cursive;
+    font-size:75px;
+    color:#963d55;
+}
+
+.finalCard h2{
+    font-family:'Great Vibes',cursive;
+    font-size:50px;
+    color:#c08a20;
+    margin:10px;
+}
+
+.finalCard p{
+    line-height:1.8;
+    margin:20px auto;
+}
+
+.finalCake{
+    font-size:90px;
+    margin:20px;
+}
+
+.decorations{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.decorations span{
+    position:absolute;
+    font-size:40px;
+    animation:floatAround 4s ease-in-out infinite;
+}
+
+.decorations span:nth-child(1){left:10%;top:20%}
+.decorations span:nth-child(2){right:15%;top:15%}
+.decorations span:nth-child(3){left:15%;bottom:20%}
+.decorations span:nth-child(4){right:10%;bottom:18%}
+
+@keyframes floatAround{
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-20px) rotate(10deg)}
+}
+
+/* =========================
+   ULTIMATE GIFT
+========================= */
+
+#ultimateGift{
+    position:fixed;
+    inset:0;
+    z-index:600;
+}
+
+.ultimateGiftBox{
+    position:relative;
+    width:230px;
+    height:190px;
+    margin:10px;
+}
+
+.ultimateBox{
+    position:absolute;
+    bottom:0;
+    width:230px;
+    height:140px;
+    background:linear-gradient(145deg,#8b451f,#4a1e0c);
+    border:3px solid gold;
+    border-radius:15px;
+}
+
+.ultimateLid{
+    position:absolute;
+    top:20px;
+    width:230px;
+    height:40px;
+    background:#a95e2c;
+    border:3px solid gold;
+    border-radius:12px;
+    z-index:2;
+}
+
+.ultimateRibbonVertical{
+    position:absolute;
+    left:103px;
+    top:0;
+    width:24px;
+    height:150px;
+    background:gold;
+    z-index:3;
+}
+
+.ultimateRibbonHorizontal{
+    position:absolute;
+    left:0;
+    top:55px;
+    width:230px;
+    height:20px;
+    background:gold;
+    z-index:3;
+}
+
+.ultimateBow{
+    position:absolute;
+    top:-40px;
+    left:90px;
+    font-size:45px;
+    z-index:4;
+}
+
+.giftHint{
+    margin:10px 0 25px;
+}
+
+/* =========================
+   FINAL REVEAL
+========================= */
+
+#ultimateReveal{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:flex-start;
+    text-align:center;
+    padding:30px 20px;
+    overflow:auto;
+    background:
+        radial-gradient(circle at 50% 35%,#8c4927,transparent 30%),
+        radial-gradient(circle at 20% 70%,#5a1f0c,transparent 35%),
+        linear-gradient(135deg,#160301,#4a1708,#210502);
+    z-index:9999;
+}
+
+.ultimateRevealCard{
+    width:min(850px,94vw);
+    padding:40px 30px;
+    background:linear-gradient(145deg,#fff5df,#ffe2bd);
+    border:3px solid #d8aa37;
+    border-radius:30px;
+    color:#57230e;
+    box-shadow:
+        0 0 30px rgba(255,200,60,.8),
+        0 30px 80px rgba(0,0,0,.7);
+    animation:revealIn 1s ease;
+}
+
+.ultimateRevealCard h1{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    color:#963d55;
+    margin:10px;
+}
+
+.ultimateRevealCard h2{
+    font-family:'Great Vibes',cursive;
+    font-size:45px;
+    color:#c08a20;
+    margin:20px;
+}
+
+.ultimateRevealCard p{
+    max-width:550px;
+    margin:20px auto;
+    line-height:1.8;
+}
+
+.revealDecor{
+    font-size:35px;
+    margin:10px;
+}
+
+.finalGifts{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.giftItem{
+    width:135px;
+    min-height:145px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:12px;
+    border-radius:20px;
+    background:rgba(255,255,255,.45);
+    box-shadow:0 8px 20px rgba(100,40,10,.15);
+    transition:.3s;
+}
+
+.giftItem:hover{
+    transform:translateY(-8px) scale(1.04);
+}
+
+.lipGloss,
+.silkChocolate{
+    font-size:60px;
+    animation:giftFloat 2s ease-in-out infinite;
+}
+
+.giftItem span{
+    margin-top:8px;
+    color:#7b3f1d;
+    font-weight:600;
+    font-size:14px;
+}
+
+.realGiftMessage{
+    margin-top:25px;
+    padding:15px;
+    font-family:'Great Vibes',cursive;
+    font-size:32px;
+    color:#963d55;
+    animation:messageGlow 2s ease-in-out infinite;
+}
+
+@keyframes giftFloat{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-10px) rotate(3deg)}
+}
+
+@keyframes messageGlow{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.04)}
+}
+
+@keyframes revealIn{
+    from{
+        opacity:0;
+        transform:scale(.5);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* FINAL PHOTO GALLERY */
+
+.photoGallery{
+    margin-top:30px;
+}
+
+.photoGallery h2{
+    font-family:'Great Vibes',cursive;
+    font-size:42px;
+    color:#963d55;
+    margin-bottom:15px;
+}
+
+.photoGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    max-width:800px;
+    margin:20px auto;
+}
+
+.photoGrid img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .logo{
+        font-size:55px;
+    }
+
+    .title,
+    .ultimateTitle{
+        font-size:50px;
+    }
+
+    .passwordCard h1,
+    .letterCard h1,
+    .surpriseCard h1{
+        font-size:45px;
+    }
+
+    .letterRow{
+        gap:12px;
+        padding:12px;
+    }
+
+    .letterRow img{
+        width:145px;
+        height:175px;
+    }
+
+    .letterText{
+        font-size:14px;
+    }
+
+    .finalCard h1{
+        font-size:55px;
+    }
+
+    .ultimateRevealCard h1{
+        font-size:52px;
+    }
+
+    .ultimateRevealCard h2{
+        font-size:36px;
+    }
+
+    .giftItem{
+        width:115px;
+        min-height:125px;
+    }
+
+    .lipGloss,
+    .silkChocolate{
+        font-size:48px;
+    }
+
+    .realGiftMessage{
+        font-size:27px;
+    }
+
+    .photoGrid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HIDDEN YOUTUBE PLAYER: audio only -->
+<div id="youtubePlayer"></div>
+
+<button id="musicButton" onclick="toggleMusic()">🔊</button>
+
+<!-- =========================
+     LOADING
+========================= -->
+
+<section id="loadingScreen">
+    <div class="logo">The Sweetest Gift ❤️</div>
+    <p>Preparing something magical...</p>
+    <div class="loadingBar">
+        <div class="progress"></div>
+    </div>
+</section>
+
+<!-- =========================
+     GIFT
+========================= -->
+
+<section id="giftScreen">
+    <div class="title">A Little Surprise 🎁</div>
+
+    <div class="giftBox">
+        <div class="lid"></div>
+        <div class="box"></div>
+        <div class="ribbon"></div>
+    </div>
+
+    <button id="unwrapBtn" class="mainButton">
+        🎁 Unwrap Your Gift
+    </button>
+</section>
+
+<!-- =========================
+     ENVELOPE
+========================= -->
+
+<section id="envelopeScreen">
+    <h1 class="title">Something For You 💌</h1>
+
+    <div class="envelope">
+        <div class="envelopeHeart">❤️</div>
+    </div>
+
+    <button id="openEnvelopeBtn" class="mainButton">
+        💌 Open Envelope
+    </button>
+</section>
+
+<!-- =========================
+     PASSWORD
+========================= -->
+
+<section id="passwordScreen">
+    <div class="passwordCard">
+        <h1>A Secret Surprise 🔐</h1>
+
+        <p>Enter the password to continue ❤️</p>
+
+        <input
+            id="passwordInput"
+            type="password"
+            placeholder="Enter password"
+        >
+
+        <br>
+
+        <button id="passwordButton" class="mainButton">
+            🔓 Enter
+        </button>
+
+        <div id="errorText"></div>
+    </div>
+</section>
+
+<!-- =========================
+     LETTER
+========================= -->
+
+<section id="letterScreen">
+
+    <div class="letterCard">
+
+        <h1>A Little Letter 💌</h1>
+
+        <div class="letterLayout">
+
+            <div class="letterRow" id="letterRow1">
+                <div class="letterText">
+                    <p id="paragraph1"></p>
+                </div>
+
+                <img
+                    src="images/photo3.jpg"
+                    alt="Memory 3"
+                >
+            </div>
+
+            <div class="letterRow" id="letterRow2">
+                <div class="letterText">
+                    <p id="paragraph2"></p>
+                </div>
+
+                <img
+                    src="images/photo11.jpg"
+                    alt="Memory 11"
+                >
+            </div>
+
+            <div class="letterRow" id="letterRow3">
+                <div class="letterText">
+                    <p id="paragraph3"></p>
+                </div>
+
+                <img
+                    src="images/photo5.jpg"
+                    alt="Memory 5"
+                >
+            </div>
+
+        </div>
+
+        <button id="moreSurprisesBtn" class="mainButton">
+            ✨ More Surprises
+        </button>
+
+    </div>
+</section>
+
+<!-- =========================
+     SURPRISE 2
+========================= -->
+
+<section id="surprise2">
+
+    <div class="surpriseCard">
+
+        <h1>There's More! 🌸</h1>
+
+        <p style="line-height:1.9;">
+            You thought that was everything? 😌
+            <br><br>
+            Nope! Your surprise isn't finished yet. 💖
+        </p>
+
+        <br>
+
+        <button id="finalButton" class="mainButton">
+            🎆 One More Surprise
+        </button>
+
+    </div>
+</section>
+
+<!-- =========================
+     BIRTHDAY SCREEN
+========================= -->
+
+<section id="finalScreen">
+
+    <div class="decorations">
+        <span>🌹</span>
+        <span>✨</span>
+        <span>💖</span>
+        <span>🍫</span>
+    </div>
+
+    <div class="finalCard">
+
+        <div class="finalRoses">
+            🌹 🌹 🌹
+        </div>
+
+        <h1>Happy Birthday!</h1>
+
+        <h2>Yashu ❤️</h2>
+
+        <p>
+            May your day be filled with happiness,
+            laughter, beautiful moments and
+            lots of sweet surprises. ✨
+        </p>
+
+        <div class="finalCake">🎂</div>
+
+        <div class="finalDecor">
+            🍫 ✨ 💖 ✨ 🍫
+        </div>
+
+        <p>
+            Psst... there's still one last gift. 🎁
+        </p>
+
+    </div>
+</section>
+
+<!-- =========================
+     ULTIMATE GIFT
+========================= -->
+
+<section id="ultimateGift">
+
+    <div class="ultimateTitle">
+        One Last Little Gift 🎁
+    </div>
+
+    <div class="ultimateGiftBox">
+
+        <div class="ultimateLid"></div>
+        <div class="ultimateBox"></div>
+        <div class="ultimateRibbonVertical"></div>
+        <div class="ultimateRibbonHorizontal"></div>
+
+        <div class="ultimateBow">🎀</div>
+
+    </div>
+
+    <p class="giftHint">
+        Something special is waiting inside... 💖
+    </p>
+
+    <button id="openUltimateGift" class="mainButton">
+        🎁 Open Your Final Gift
+    </button>
+
+</section>
+
+<!-- =========================
+     FINAL GIFT REVEAL
+========================= -->
+
+<section id="ultimateReveal">
+
+    <div class="ultimateRevealCard">
+
+        <div class="revealDecor">
+            🌹 ✨ 🌹
+        </div>
+
+        <h1>Your Final Gift 💖</h1>
+
+        <div class="finalGifts">
+
+            <div class="giftItem">
+                <div class="lipGloss">💄</div>
+                <span>Lip Gloss ✨</span>
+            </div>
+
+            <div class="giftItem">
+                <div class="silkChocolate">🍫🍪</div>
+                <span>Dairy Milk Silk Oreo 💜</span>
+            </div>
+
+            <div class="giftItem">
+                <div class="silkChocolate">🍫</div>
+                <span>KitKat ❤️</span>
+            </div>
+
+            <div class="giftItem">
+                <div class="silkChocolate">🍫</div>
+                <span>Galaxy 🌟</span>
+            </div>
+
+        </div>
+
+        <h2>A Little Something For You ✨</h2>
+
+        <p>
+            Because every sweet surprise deserves
+            one last little touch of sparkle. 💖
+        </p>
+
+        <div class="realGiftMessage">
+            💄🍫 And soon... you'll get the real gifts in real life! 🎁❤️
+            <br><br>
+            💖 One last thing... can we meet at 6:30 PM for your gifts? 🎁🌹
+        </div>
+
+        <!-- ALL PHOTOS AT THE LAST SURPRISE -->
+        <div class="photoGallery">
+
+            <h2>Our Little Memories 📸❤️</h2>
+
+            <div class="photoGrid">
+
+                <img src="images/photo1.jpg" alt="Memory 1">
+                <img src="images/photo2.jpg" alt="Memory 2">
+                <img src="images/photo3.jpg" alt="Memory 3">
+                <img src="images/photo4.jpg" alt="Memory 4">
+                <img src="images/photo5.jpg" alt="Memory 5">
+                <img src="images/photo6.jpg" alt="Memory 6">
+                <img src="images/photo7.jpg" alt="Memory 7">
+                <img src="images/photo8.jpg" alt="Memory 8">
+                <img src="images/photo9.jpg" alt="Memory 9">
+                <img src="images/photo10.jpg" alt="Memory 10">
+                <img src="images/photo11.jpg" alt="Memory 11">
+
+            </div>
+
+        </div>
+
+        <div class="revealDecor">
+            🌸 ✨ 🍫 ✨ 🌸
+        </div>
+
+    </div>
+</section>
+
+<canvas id="fireworksCanvas"></canvas>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+/* =========================
+   YOUTUBE AUDIO
+   Official video ID:
+   hgi2MYAFgE8
+========================= */
+
+let player = null;
+let youtubeReady = false;
+
+function onYouTubeIframeAPIReady(){
+
+    player = new YT.Player("youtubePlayer",{
+
+        height:"1",
+        width:"1",
+
+        videoId:"hgi2MYAFgE8",
+
+        playerVars:{
+            autoplay:0,
+            controls:0,
+            loop:1,
+            playlist:"hgi2MYAFgE8",
+            playsinline:1,
+            rel:0
+        },
+
+        events:{
+            onReady:function(){
+                youtubeReady = true;
+            }
+        }
+    });
+}
+
+function playSong(){
+
+    if(
+        youtubeReady &&
+        player &&
+        typeof player.playVideo === "function"
+    ){
+        player.playVideo();
+        document.getElementById("musicButton").textContent = "🔊";
+    }
+}
+
+function toggleMusic(){
+
+    if(!youtubeReady || !player){
+        return;
+    }
+
+    const state = player.getPlayerState();
+
+    if(state === YT.PlayerState.PLAYING){
+
+        player.pauseVideo();
+        document.getElementById("musicButton").textContent = "🔇";
+
+    }else{
+
+        player.playVideo();
+        document.getElementById("musicButton").textContent = "🔊";
+
+    }
+}
+
+/* =========================
+   GET SCREENS
+========================= */
+
+const loadingScreen =
+    document.getElementById("loadingScreen");
+
+const giftScreen =
+    document.getElementById("giftScreen");
+
+const envelopeScreen =
+    document.getElementById("envelopeScreen");
+
+const passwordScreen =
+    document.getElementById("passwordScreen");
+
+const letterScreen =
+    document.getElementById("letterScreen");
+
+const surprise2 =
+    document.getElementById("surprise2");
+
+const finalScreen =
+    document.getElementById("finalScreen");
+
+const ultimateGift =
+    document.getElementById("ultimateGift");
+
+const ultimateReveal =
+    document.getElementById("ultimateReveal");
+
+/* =========================
+   LOADING → GIFT
+========================= */
+
+setTimeout(function(){
+
+    loadingScreen.style.display = "none";
+    giftScreen.style.display = "flex";
+
+},3200);
+
+/* =========================
+   GIFT → ENVELOPE + MUSIC
+========================= */
+
+document
+.getElementById("unwrapBtn")
+.addEventListener("click",function(){
+
+    playSong();
+
+    giftScreen.style.display = "none";
+    envelopeScreen.style.display = "flex";
+
+});
+
+/* =========================
+   ENVELOPE → PASSWORD
+========================= */
+
+document
+.getElementById("openEnvelopeBtn")
+.addEventListener("click",function(){
+
+    envelopeScreen.style.display = "none";
+    passwordScreen.style.display = "flex";
+
+    document
+    .getElementById("passwordInput")
+    .focus();
+
+});
+
+/* =========================
+   LETTER
+========================= */
+
+const paragraphs = [
+
+    {
+        element:"paragraph1",
+        row:"letterRow1",
+        text:`I hope today brings you lots of happiness,
+laughter and beautiful memories. ❤️`
+    },
+
+    {
+        element:"paragraph2",
+        row:"letterRow2",
+        text:`You deserve a day filled with smiles,
+surprises and all the little things
+that make you happy. ✨`
+    },
+
+    {
+        element:"paragraph3",
+        row:"letterRow3",
+        text:`Keep being your amazing, funny and
+wonderful self. 🌸
+
+And remember...
+this is only the beginning
+of your little surprise. ❤️`
+    }
+
+];
+
+let currentParagraph = 0;
+let currentCharacter = 0;
+
+function typeCurrentParagraph(){
+
+    if(currentParagraph >= paragraphs.length){
+
+        document
+        .getElementById("moreSurprisesBtn")
+        .style.display = "inline-block";
+
+        return;
+    }
+
+    const item = paragraphs[currentParagraph];
+
+    const element =
+        document.getElementById(item.element);
+
+    const row =
+        document.getElementById(item.row);
+
+    row.classList.add("show");
+
+    if(currentCharacter < item.text.length){
+
+        element.innerHTML =
+            item.text
+            .substring(0,currentCharacter + 1)
+            .replace(/\n/g,"<br>");
+
+        currentCharacter++;
+
+        setTimeout(typeCurrentParagraph,35);
+
+    }else{
+
+        currentParagraph++;
+        currentCharacter = 0;
+
+        setTimeout(typeCurrentParagraph,500);
+    }
+}
+
+/* =========================
+   PASSWORD
+========================= */
+
+function checkPassword(){
+
+    const password =
+        document
+        .getElementById("passwordInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const errorText =
+        document.getElementById("errorText");
+
+    if(password === "yashu09112010"){
+
+        errorText.textContent = "";
+
+        passwordScreen.style.display = "none";
+        letterScreen.style.display = "flex";
+
+        currentParagraph = 0;
+        currentCharacter = 0;
+
+        paragraphs.forEach(function(item){
+
+            document
+            .getElementById(item.element)
+            .innerHTML = "";
+
+            document
+            .getElementById(item.row)
+            .classList.remove("show");
+
+        });
+
+        document
+        .getElementById("moreSurprisesBtn")
+        .style.display = "none";
+
+        typeCurrentParagraph();
+
+    }else{
+
+        errorText.textContent =
+            "💡 Hint: yashu + birthday";
+    }
+}
+
+/* PASSWORD BUTTON */
+
+document
+.getElementById("passwordButton")
+.addEventListener("click",checkPassword);
+
+/* ENTER KEY */
+
+document
+.getElementById("passwordInput")
+.addEventListener("keydown",function(event){
+
+    if(event.key === "Enter"){
+        checkPassword();
+    }
+
+});
+
+/* =========================
+   LETTER → SURPRISE 2
+========================= */
+
+document
+.getElementById("moreSurprisesBtn")
+.addEventListener("click",function(){
+
+    letterScreen.style.display = "none";
+    surprise2.style.display = "flex";
+
+});
+
+/* =========================
+   SURPRISE 2 → BIRTHDAY
+========================= */
+
+document
+.getElementById("finalButton")
+.addEventListener("click",function(){
+
+    surprise2.style.display = "none";
+    finalScreen.style.display = "flex";
+
+});
+
+/* =========================
+   BIRTHDAY → ULTIMATE GIFT
+========================= */
+
+finalScreen.addEventListener("click",function(event){
+
+    if(event.target === finalScreen){
+
+        finalScreen.style.display = "none";
+        ultimateGift.style.display = "flex";
+
+    }
+
+});
+
+/* =========================
+   ULTIMATE GIFT → FINAL REVEAL
+========================= */
+
+document
+.getElementById("openUltimateGift")
+.addEventListener("click",function(){
+
+    ultimateGift.style.display = "none";
+    ultimateReveal.style.display = "flex";
+
+    startFireworks();
+
+});
+
+/* =========================
+   FIREWORKS
+========================= */
+
+const fireworksCanvas =
+    document.getElementById("fireworksCanvas");
+
+const fireworksCtx =
+    fireworksCanvas.getContext("2d");
+
+let fireworksParticles = [];
+
+function resizeFireworks(){
+
+    fireworksCanvas.width =
+        window.innerWidth;
+
+    fireworksCanvas.height =
+        window.innerHeight;
+}
+
+resizeFireworks();
+
+window.addEventListener(
+    "resize",
+    resizeFireworks
+);
+
+function createFirework(){
+
+    const x =
+        Math.random() *
+        fireworksCanvas.width;
+
+    const y =
+        Math.random() *
+        (fireworksCanvas.height * 0.55) +
+        80;
+
+    for(let i = 0; i < 55; i++){
+
+        const angle =
+            Math.random() *
+            Math.PI * 2;
+
+        const speed =
+            Math.random() * 6 + 2;
+
+        fireworksParticles.push({
+
+            x:x,
+            y:y,
+
+            vx:Math.cos(angle) * speed,
+            vy:Math.sin(angle) * speed,
+
+            life:80,
+
+            size:Math.random() * 3 + 1
+        });
+    }
+}
+
+function animateFireworks(){
+
+    fireworksCtx.clearRect(
+        0,
+        0,
+        fireworksCanvas.width,
+        fireworksCanvas.height
+    );
+
+    fireworksParticles =
+        fireworksParticles.filter(
+            particle => particle.life > 0
+        );
+
+    fireworksParticles.forEach(particle => {
+
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        particle.vy += 0.05;
+        particle.life--;
+
+        fireworksCtx.globalAlpha =
+            particle.life / 80;
+
+        fireworksCtx.fillStyle =
+            "gold";
+
+        fireworksCtx.beginPath();
+
+        fireworksCtx.arc(
+            particle.x,
+            particle.y,
+            particle.size,
+            0,
+            Math.PI * 2
+        );
+
+        fireworksCtx.fill();
+
+    });
+
+    fireworksCtx.globalAlpha = 1;
+
+    requestAnimationFrame(
+        animateFireworks
+    );
+}
+
+function startFireworks(){
+
+    fireworksCanvas.style.display =
+        "block";
+
+    fireworksParticles = [];
+
+    createFirework();
+
+    setTimeout(createFirework,500);
+    setTimeout(createFirework,1000);
+    setTimeout(createFirework,1500);
+    setTimeout(createFirework,2000);
+
+    setTimeout(function(){
+
+        fireworksCanvas.style.display =
+            "none";
+
+    },5000);
+}
+
+animateFireworks();
+
+</script>
+
+</body>
+</html>
